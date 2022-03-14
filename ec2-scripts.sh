@@ -64,13 +64,14 @@ start_instances(){
     --instance-ids $1
 }
 
+
+command -v aws ||  printf "aws cli not installed. follow https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html to install it first \n"
+
+
 command=""
 
 for x in "$@"; do
     command=$command" $x"
 done
-
-echo ""
-printf "command is $command \n"
 
 eval "$command" 
