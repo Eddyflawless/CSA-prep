@@ -20,4 +20,5 @@ echo " <!DOCTYPE html>
 </html> " > /var/www/html/index.html
 
 service httpd start
+service httpd enable
 chkconfig httpd on
