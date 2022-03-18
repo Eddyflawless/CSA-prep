@@ -1,4 +1,4 @@
 pems/
 hosts.cfg
-reports/
-plays/
+reports/report-*
+plays/play.*
