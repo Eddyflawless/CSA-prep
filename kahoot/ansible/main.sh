@@ -148,7 +148,9 @@ function run_play_suite(){
         
         play_book="$current_folder/play.sh"
 
-        if [[ -f  $play_book ]]; then
+        file_permissions=$( stat -f "%OLp" $play_book) #expecting 755
+
+        if [[ -f  $play_book ]] ; then
 
             if [[ -x $play_book ]]; then
                 chmod +x $play_book
