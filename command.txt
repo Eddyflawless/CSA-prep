@@ -1,0 +1,15 @@
+awk -F " " 'NR==1;NR > 1 { print ($2==F ? ($1-32)/1.8: $1) " C"}' temperatures.txt 
+awk -F " " '(NR==1){ print "This is the first line" } (NR > 1){ print "This is the rest | line "   NR}' temperatures.txt 
+awk -F " " '(NR==1){}; (NR==2){}; (NR > 2){ print "This is the rest | line "   NR}' temperatures.txt 
+awk -F " " '(NR==1){ print $0}; (NR==2){}; (NR > 2){ print "This is the rest | line "   NR}' temperatures.txt 
+awk -F " " 'NR==1; (NR==2){}; (NR > 2){ print "This is the rest | line "   NR}' temperatures.txt 
+awk  '($0 ~ /C$/){print $0}' temperatures.txt 
+awk  '/C$/{print $0}' temperatures.txt #similar to grep command
+awk 'BEGIN{ print "--------START---------"} END{ print "-------END-------"} { print}' temperatures.txt 
+awk 'BEGIN{ temp_record=0;print "--------START---------"} (NR)>1{temp_record += 1} END{ print "-------END-------" "total records: " temp_record} { print}' temperatures.txt 
+
+find . | grep "LICENSE"
+find . | grep i "LICENSE"
+
+grep -v "^#" Makefile > newMakeFile
+find . -name '*.S' -exec grep -Hn "foo" {} \;
