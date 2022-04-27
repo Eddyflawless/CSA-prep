@@ -1,0 +1,48 @@
+{
+    "Version": "",
+    "Statement": [
+        {
+            "Sid": "AllowerUserToSeeBucketListInTheConsole",
+            "Effect": "Allow",
+            "Action": [ 
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        },
+        {
+            "Sid": "AllowRootAndHomeListingOfCompanyBucket",
+            "Effect": "Allow",
+            "Action": [ "s3:ListBucket" ],
+            "Resource": [ "arn:aws:s3:::my-company-drive" ],
+            "Condition": {
+                "StringEquals": {
+                    "s3:prefix": ["","home/"],
+                    "s3:delimiter": [ "/"]
+                }
+            }
+        },
+        {
+            "Sid": "AllowListingOfUserFolder",
+            "Effect": "Allow",
+            "Action": [ "s3:ListBucket"],
+            "Resource": [ "arn:aws:s3:::my-company-drive" ],
+            "Condition": {
+                "s3:prefix" : ["home/${aws:username}/*"]
+            }
+        },
+        {
+            "Sid": "AllowAllS3ActionsInUserFolder",
+            "Effect": "Allow",
+            "Action": [ 
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [ "arn:aws:s3:::my-company-drive/home/${aws:username}/*" ]
+        }
+
+    ]
+}

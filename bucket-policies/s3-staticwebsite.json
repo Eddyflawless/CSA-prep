@@ -1,0 +1,14 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Actions": [
+                "s3:GetObject"
+            ],
+            "Principal": "*",
+            "Resource": "arn:aws:s3:::sample-website082"
+        }
+    ]
+}
