@@ -23,8 +23,9 @@ while getopts "r:h:" option;do
             echo "display in red of $OPTARG"
             shift
         ;;
-        -h)
+        h)
             echo "display in hibernate $OPTARG"
+            echo $2
             shift
         ;;
         \?)
